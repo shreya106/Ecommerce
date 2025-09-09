@@ -19,8 +19,6 @@ import com.app.Ecommerce.model.User;
 import com.app.Ecommerce.repository.UserRepository;
 import com.app.Ecommerce.security.JwtUtils;
 
-import ch.qos.logback.core.joran.spi.NoAutoStart;
-
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -42,6 +40,7 @@ public class AuthController {
 	@PostMapping("/register")
 	private ResponseEntity<String> register(@RequestBody RegisterRequest register){
 		User user = new User();
+		
 		user.setName(register.getName());
 		user.setAddress(register.getAddress());
 		user.setEmailId(register.getEmail());
@@ -51,7 +50,7 @@ public class AuthController {
 		user.setLocation(register.getLocation());
 		userRespository.save(user);
 		
-		return ResponseEntity.ok("User Registered Successfully");
+	return ResponseEntity.ok("User Registered Successfully");
 	}
 	
 	@PostMapping("/login")
